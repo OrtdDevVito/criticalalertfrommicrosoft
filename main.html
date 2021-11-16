@@ -1,13 +1,5 @@
-<body id="bori">
-	<audio controls autoplay>
-	  <source src="horse.mp3" type="audio/mpeg">
-	</audio>
-
-
-	<audio controls autoplay>
-	  <source src="horse2.mp3" type="audio/mpeg">
-	</audio>
-
+<body id="bori" onclick="sirene.play();alertacritico.play();">
+	<h1>Clique aki para remover virus</h1>
 </body>
 <!--<marquee behavior="scroll" direction="right" scrollamount="1000">Very Fast Scrolling</marquee>!-->
 
@@ -35,5 +27,6 @@
 	{
 		window.setTimeout(createMarquee(x), 500);
 	}
-
+	var sirene = new Audio('horse.mp3');
+	var alertacritico = new Audio('horse2.mp3')
 </script>
