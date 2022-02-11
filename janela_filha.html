@@ -4,9 +4,12 @@
     const SCREEN_HEIGHT = window.screen.availHeight
     const WIN_WIDTH = 480
     const WIN_HEIGHT = 260
-    const VELOCITY = 15
+    const VELOCITY = 1000
     const MARGIN = 10
     const TICK_LENGTH = 0
+function virus() {
+		window.open('janela_filha.html','popup','width=600,height=600');
+	}
 
     function moveWindowBounce () {
   let vx = VELOCITY * (Math.random() > 0.5 ? 1 : -1)
@@ -28,3 +31,5 @@
 }
 moveWindowBounce()
 </script>
+<body onclick="virus()">
+</body>
