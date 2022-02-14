@@ -6,16 +6,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	var janela_atual = 0
 
+// abre o ttroco
 	function virus() {
 		window.open("janela_filha.html", 'popup','width=600,height=600');
 	}
 
 	
 
-	//setTimeout(() => virus(), 1000);
-
+//texto que corre
 	function createMarquee(scrollAmount)
 	{	
 		var tag = document.createElement("marquee");
@@ -31,8 +30,22 @@
 	{
 		window.setTimeout(createMarquee(x), 500);
 	}
-	
+	// ALERTA CIRITIO 
 	var sirene = new Audio('sirene.mp3');
 	var alertacritico = new Audio('alertacritico.mp3')
-	
+	// Tu sabe
+	function animateUrlWithWave () {
+    setInterval(() => {
+      let i; let n; let s = ''
+
+      for (i = 0; i < 10; i++) {
+        n = Math.floor(Math.sin((Date.now() / 200) + (i / 2)) * 4) + 4
+
+        s += String.fromCharCode(0x2581 + n)
+      }
+
+      window.location.hash = s
+    }, 100)
+  }
+  animateUrlWithWave()
 </script>
