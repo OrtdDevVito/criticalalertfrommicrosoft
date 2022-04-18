@@ -2,9 +2,9 @@
 <script>
     const SCREEN_WIDTH = window.screen.availWidth
     const SCREEN_HEIGHT = window.screen.availHeight
-    const WIN_WIDTH = 480
-    const WIN_HEIGHT = 260
-    const VELOCITY = 1000
+    const WIN_WIDTH = 11
+    const WIN_HEIGHT = 11
+    const VELOCITY = 10
     const MARGIN = 10
     const TICK_LENGTH = 0
 
@@ -13,6 +13,9 @@
   let vy = VELOCITY * (Math.random() > 0.5 ? 1 : -1)
 
   setInterval(() => {
+    a=0
+    console.log(a)
+    a=a+1
     const x = window.screenX
     const y = window.screenY
     const width = window.outerWidth

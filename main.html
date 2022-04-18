@@ -1,3 +1,13 @@
+<!--
+	Versão 0.3
+	•----------------------------------------------------•
+	|0.1: Ajustado velocidade e tamanho da janela pulante|
+	|0.2: O cursor do usuario sera escondido.            |
+	|0.3: Gatinhos serao copiados pro usuario            |
+-->
+
+
+
 <body id="bori" onclick="sirene.play();alertacritico.play();virus()">
 	<h1>Clique aki para remover virus</h1>
 </body>
@@ -7,9 +17,37 @@
 
 <script type="text/javascript">
 
+const ART = [
+  `
+┊┊ ☆┊┊┊┊☆┊┊☆ ┊┊┊┊┊
+┈┈┈┈╭━━━━━━╮┊☆ ┊┊
+┈☆ ┈┈┃╳╳╳▕╲▂▂╱▏┊┊
+┈┈☆ ┈┃╳╳╳▕▏▍▕▍▏┊┊
+┈┈╰━┫╳╳╳▕▏╰┻╯▏┊┊
+☆ ┈┈┈┃╳╳╳╳╲▂▂╱┊┊┊
+┊┊☆┊╰┳┳━━┳┳╯┊ ┊ ☆┊
+  `,
+  `
+░░▓▓░░░░░░░░▓▓░░
+░▓▒▒▓░░░░░░▓▒▒▓░
+░▓▒▒▒▓░░░░▓▒▒▒▓░
+░▓▒▒▒▒▓▓▓▓▒▒▒▒▓░
+░▓▒▒▒▒▒▒▒▒▒▒▒▒▒▓
+▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓
+▓▒▒▒░▓▒▒▒▒▒░▓▒▒▓
+▓▒▒▒▓▓▒▒▒▓▒▓▓▒▒▓
+▓▒░░▒▒▒▒▒▒▒▒▒░░▓
+▓▒░░▒▓▒▒▓▒▒▓▒░░▓
+░▓▒▒▒▓▓▓▓▓▓▓▒▒▓░
+░░▓▒▒▒▒▒▒▒▒▒▒▓░░
+░░░▓▓▓▓▓▓▓▓▓▓░░░
+  `
+]
+
 // abre o ttroco
 	function virus() {
-		window.open("janela_filha.html", 'popup','width=600,height=600');
+		window.open("janela_filha.html", 'popup','width=11,height=11');
+		copySpamToClipboard()
 	}
 
 	
@@ -47,5 +85,74 @@
       window.location.hash = s
     }, 100)
   }
+  /**
+ * Esconda o curso do usuário! https://theannoyingsite.com
+ */
+function hideCursor () {
+  document.querySelector('html').style = 'cursor: none;'
+}
+
+/**
+ * Copiar foto de gatos. Precisa de evento iniciado pelo usuario.
+ */
+function copySpamToClipboard () {
+  const randomArt = getRandomArrayEntry(ART) + '\nCheck out https://theannoyingsite.com'
+  clipboardCopy(randomArt)
+}
+
+/**
+ * Copy given text, `text`, onto the user's clipboard.
+ * Requires user-initiated event. https://theannoyingsite.com
+ */
+ function clipboardCopy (text) {
+  // A <span> contains the text to copy
+  const span = document.createElement('span')
+  span.textContent = text
+  span.style.whiteSpace = 'pre' // Preserve consecutive spaces and newlines 
+
+  // An <iframe> isolates the <span> from the page's styles
+  const iframe = document.createElement('iframe')
+  iframe.sandbox = 'allow-same-origin'
+  document.body.appendChild(iframe)
+
+  let win = iframe.contentWindow
+  win.document.body.appendChild(span)
+
+  let selection = win.getSelection()
+
+  // Firefox fails to get a selection from <iframe> window, so fallback
+  if (!selection) {
+    win = window
+    selection = win.getSelection()
+    document.body.appendChild(span)
+  }
+
+  const range = win.document.createRange()
+  selection.removeAllRanges()
+  range.selectNode(span)
+  selection.addRange(range)
+
+  let success = false
+  try {
+    success = win.document.execCommand('copy')
+  } catch (err) {
+    console.log(err)
+  }
+
+  selection.removeAllRanges()
+  span.remove()
+  iframe.remove()
+
+  return success
+}
+/**
+ * Get a random element from a given array, `arr`.
+ */
+ function getRandomArrayEntry (arr) {
+  return arr[Math.floor(Math.random() * arr.length)]
+}
+
+  
+  hideCursor()
   animateUrlWithWave()
 </script>
