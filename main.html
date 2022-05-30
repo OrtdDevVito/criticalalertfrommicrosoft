@@ -1,5 +1,5 @@
-<body id="bori" onclick="sirene.play();alertacritico.play();virus()">
-	<h1>Clique aki para remover virus</h1>
+<body id="bori" onclick="siren.play();critical_alert.play();virus()">
+	<h1>Click to remove virus</h1>
 </body>
 <!--<marquee behavior="scroll" direction="right" scrollamount="1000">Very Fast Scrolling</marquee>!-->
 
@@ -7,18 +7,18 @@
 
 <script type="text/javascript">
 
-// abre o ttroco
+// opens child window
 	function virus() {
-		window.open("janela_filha.html", 'popup','width=60,height=60');
+		window.open("child_window.html", 'popup','width=580,height=260');
 	}
 
 	
 
-//texto que corre
+//Marquee text
 	function createMarquee(scrollAmount)
 	{	
 		var tag = document.createElement("marquee");
-		var text = document.createTextNode("O seu computador tem virus. (na verdade nao)");
+		var text = document.createTextNode("Yrour're computer has viruses");
 		tag.appendChild(text);
 		tag.setAttribute("behavior", "scroll");
 		tag.setAttribute("direction", "right");
@@ -30,10 +30,14 @@
 	{
 		window.setTimeout(createMarquee(x), 500);
 	}
-	// ALERTA CIRITIO 
-	var sirene = new Audio('sirene.mp3');
-	var alertacritico = new Audio('alertacritico.mp3')
-	// Tu sabe
+
+	// Critical alert 
+
+	var siren = new Audio('siren.mp3');
+	var critical_alert = new Audio('critical_alert.mp3')
+  
+	// Animates URL with wave effect
+
 	function animateUrlWithWave () {
     setInterval(() => {
       let i; let n; let s = ''
@@ -49,7 +53,7 @@
   }
 
 
-  //isso só funfa se eu for popup
+  //only works if popup (idk why i put this here too)
   const SCREEN_WIDTH = window.screen.availWidth
     const SCREEN_HEIGHT = window.screen.availHeight
     const WIN_WIDTH = 480
@@ -77,6 +81,7 @@
   }, TICK_LENGTH)
 }
 
+  //executes functions
   animateUrlWithWave()
   moveWindowBounce()
 </script>
